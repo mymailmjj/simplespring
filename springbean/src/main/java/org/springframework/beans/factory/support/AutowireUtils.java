@@ -115,20 +115,7 @@ abstract class AutowireUtils {
 	 * Otherwise it returns a resolver that checks the bean definition only.
 	 */
 	public static AutowireCandidateResolver createAutowireCandidateResolver() {
-		if (JdkVersion.isAtLeastJava15()) {
-			try {
-				Class resolverClass = ClassUtils.forName(
-						QUALIFIED_ANNOTATION_AUTOWIRE_CANDIDATE_RESOLVER_CLASS_NAME, AutowireUtils.class.getClassLoader());
-				return (AutowireCandidateResolver) resolverClass.newInstance();
-			}
-			catch (Throwable ex) {
-				throw new IllegalStateException("Unable to load Java 1.5 dependent class [" +
-						QUALIFIED_ANNOTATION_AUTOWIRE_CANDIDATE_RESOLVER_CLASS_NAME + "]", ex);
-			}
-		}
-		else {
 			return new SimpleAutowireCandidateResolver();
-		}
 	}
 
 }
