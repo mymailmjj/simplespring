@@ -18,6 +18,8 @@ package org.springframework.context.support;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.Assert;
@@ -201,5 +203,6 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 	protected Resource[] getConfigResources() {
 		return this.configResources;
 	}
+
 
 }

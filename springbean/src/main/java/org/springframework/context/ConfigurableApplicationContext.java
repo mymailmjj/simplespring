@@ -33,7 +33,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  * @author Juergen Hoeller
  * @since 03.11.2003
  */
-public interface ConfigurableApplicationContext extends ApplicationContext, Lifecycle {
+public interface ConfigurableApplicationContext extends ApplicationContext{
 
 	/**
 	 * Any number of these characters are considered delimiters between
@@ -43,15 +43,6 @@ public interface ConfigurableApplicationContext extends ApplicationContext, Life
 	 * @see org.springframework.web.servlet.FrameworkServlet#setContextConfigLocation
 	 */
 	String CONFIG_LOCATION_DELIMITERS = ",; \t\n";
-
-	/**
-	 * Name of the LoadTimeWeaver bean in the factory. If such a bean is supplied,
-	 * the context will use a temporary ClassLoader for type matching, in order
-	 * to allow the LoadTimeWeaver to process all actual bean classes.
-	 * @see org.springframework.instrument.classloading.LoadTimeWeaver
-	 */
-	String LOAD_TIME_WEAVER_BEAN_NAME = "loadTimeWeaver";
-
 
 	/**
 	 * Set the parent of this application context.
@@ -71,17 +62,6 @@ public interface ConfigurableApplicationContext extends ApplicationContext, Life
 	 */
 	void addBeanFactoryPostProcessor(BeanFactoryPostProcessor beanFactoryPostProcessor);
 
-	/**
-	 * Add a new ApplicationListener that will be notified on context events
-	 * such as context refresh and context shutdown.
-	 * <p>Note that any ApplicationListener registered here will be applied
-	 * on refresh of this context. If a listener is added after the initial
-	 * refresh, it will be applied on next refresh of the context.
-	 * @param listener the ApplicationListener to register
-	 * @see org.springframework.context.event.ContextRefreshedEvent
-	 * @see org.springframework.context.event.ContextClosedEvent
-	 */
-	void addApplicationListener(ApplicationListener listener);
 
 	/**
 	 * Load or refresh the persistent representation of the configuration,
